@@ -167,14 +167,10 @@ gyromagnetic_anomaly(Species("H"))          # NaN
 """
 function gyromagnetic_anomaly(species::Species)::Float64
   kind = getfield(species, :kind)
-  if kind == Kind.LEPTON
-    return (gspin_of(species)-2.0)/2.0
-  elseif kind == Kind.HADRON
-    gnorm = gspin_of(species) * massof(species)/M_PROTON
-    return (gnorm - 2.0)/2.0
-  else return convert(Float64, NaN)
-  end
 
+
+  (kind == Kind.LEPTON || kind == Kind.HADRON) ? (return ((gspin_of(species)-2.0)/2.0)) : (return convert(Float64, NaN))
+  
 end
 
 

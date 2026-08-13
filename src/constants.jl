@@ -136,9 +136,14 @@ const ANOMALY_MUON::Float64 = _ACTIVE.ANOMALY_MUON
 # muon magnetic moment anomaly
 
 """
-G_DEUTERON::Float64 - The deuteron spin g-factor per the selected CODATA release.
+_G_DEUTERON::Float64 - The deuteron spin g-factor per the selected CODATA release, normalized to the Bohr Magneton.
 """
-const G_DEUTERON::Float64 = _ACTIVE.G_DEUTERON
+const _G_DEUTERON::Float64 = _ACTIVE.G_DEUTERON
+# deuteron g factor 
+"""
+_G_DEUTERON::Float64 - The deuteron spin g-factor normalized with the mass of a deuteron.
+"""
+const G_DEUTERON::Float64 = _G_DEUTERON * M_DEUTERON / M_PROTON
 # deuteron g factor 
 """
 G_ELECTRON::Float64 - The electron spin g-factor per the selected CODATA release.
@@ -146,9 +151,14 @@ G_ELECTRON::Float64 - The electron spin g-factor per the selected CODATA release
 const G_ELECTRON::Float64 = _ACTIVE.G_ELECTRON
 # electron g factor 
 """
-G_HELION::Float64 - The helion spin g-factor per the selected CODATA release.
+G_HELION::Float64 - The helion spin g-factor per the selected CODATA release, normalized to the Bohr Magneton.
 """
-const G_HELION::Float64 = _ACTIVE.G_HELION
+const _G_HELION::Float64 = _ACTIVE.G_HELION
+# helion g factor  
+"""
+G_HELION::Float64 - The helion spin g-factor  normalized with the mass of a Helion.
+"""
+const G_HELION::Float64 = _G_HELION * M_HELION / M_PROTON
 # helion g factor 
 """
 G_MUON::Float64 - The muon spin g-factor per the selected CODATA release.
@@ -166,9 +176,14 @@ G_PROTON::Float64 - The proton spin g-factor per the selected CODATA release.
 const G_PROTON::Float64 = _ACTIVE.G_PROTON
 # proton g factor 
 """
-G_TRITON::Float64 - The triton spin g-factor per the selected CODATA release.
+G_TRITON::Float64 - The triton spin g-factor per the selected CODATA release, normalized to the Bohr Magneton.
 """
-const G_TRITON::Float64 = _ACTIVE.G_TRITON
+const _G_TRITON::Float64 = _ACTIVE.G_TRITON
+# triton g factor
+"""
+G_TRITON::Float64 - The triton spin g-factor normalized with the mass of a Triton.
+"""
+const G_TRITON::Float64 = _G_TRITON * M_TRITON / M_PROTON
 # triton g factor
 
 
