@@ -21,11 +21,15 @@ Units: **eV/c²**
 | `M_MUON` | muon |
 | `M_DEUTERON` | deuteron |
 | `M_HELION` | helion (³He nucleus) |
+| `M_TRITON` | triton (³H nucleus) ‡ |
 | `M_PION_0` | neutral pion † |
 | `M_PION_CHARGED` | charged pion † |
 
 † Pion masses are taken from the Particle Data Group (PDG), not from CODATA,
 and are the same across all release years.
+
+‡ `M_TRITON` is not tabulated in the 2002 CODATA release; `CODATA2002.M_TRITON`
+is `NaN`.
 
 
 ---
@@ -86,13 +90,18 @@ The gyromagnetic anomaly is defined as ``a = (g - 2)/2``.
 | `H_BAR` | reduced Planck constant *ħ* | eV·s |
 | `R_ELECTRON` | classical electron radius | m |
 | `R_PROTON` | classical proton radius | m |
-| `CLASSICAL_RADIUS_FACTOR` | ``e^2 / (4\pi\varepsilon_0) = r_e m_e c^2`` | eV·m |
+| `CLASSICAL_RADIUS_FACTOR` | ``e^2 / (4\pi\varepsilon_0) = r_e m_e c^2`` † | eV·m |
 | `K_BOLTZMANN` | Bolzmann's constant k<sub>B<sub> | eV/K |
 | `EPS_0` | permittivity of free space | 1/(eV·m) |
 | `MU_0` | vacuum permeability | eV·s²/m |
 | `AVOGADRO` | Avogadro's constant | mol⁻¹ |
 | `FINE_STRUCTURE` | fine-structure constant | dimensionless |
 | `RELEASE_YEAR` | active CODATA release year | — |
+
+† `CLASSICAL_RADIUS_FACTOR` is not a tabulated CODATA value; it is computed as
+`R_ELECTRON * M_ELECTRON` from the active release.  It is the same for all
+particles of charge ±1.  Because it is derived, it is not a field of the
+`CODATA_release` structs (e.g. there is no `CODATA2022.CLASSICAL_RADIUS_FACTOR`).
 
 
 ---

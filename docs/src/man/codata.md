@@ -9,7 +9,7 @@ use at runtime.
 
 | Release | Notes |
 |---------|-------|
-| 2002 | earliest supported |
+| 2002 | earliest supported; `M_TRITON` is not tabulated in this release (`CODATA2002.M_TRITON == NaN`) |
 | 2006 | |
 | 2010 | first release with `G_HELION`, `ANOMALY_ELECTRON`, `ANOMALY_MUON` |
 | 2014 | |
@@ -70,6 +70,11 @@ CODATA2014.C_LIGHT       # speed of light from the 2014 release
 The pion masses (`M_PION_0`, `M_PION_CHARGED`) are not published in any CODATA
 release.  They are taken from Particle Data Group (PDG) tables and remain
 constant regardless of the selected release year.
+
+`CLASSICAL_RADIUS_FACTOR` is derived rather than tabulated: it is computed as
+`R_ELECTRON * M_ELECTRON` from the active release.  It is therefore not a field
+of the `CODATA_release` structs — `CODATA2018.CLASSICAL_RADIUS_FACTOR` does not
+exist, only the exported top-level constant.
 
 The gyromagnetic anomalies (`ANOMALY_ELECTRON`, `ANOMALY_MUON`) and the helion
 g-factor (`G_HELION`) were not individually tabulated by CODATA until the 2010

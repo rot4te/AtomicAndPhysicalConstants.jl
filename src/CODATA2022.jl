@@ -43,6 +43,10 @@ M_HELION = 2.80839161112e9,
 M_DEUTERON = 1.875612945e9,
 # Deuteron Mass [eV]/c^2
 
+M_TRITON = 2.80892113668e9,
+# Triton Mass [eV]/c^2
+
+
 # constants mysteriously missing from the release
 # picked up from PDG
 M_PION_0 = 1.349768277676847e8,
@@ -126,7 +130,7 @@ H_PLANCK = 4.135667696e-15,
 # Planck's constant [eV*s]
 H_BAR = 6.582119569e-16,
 # h_planck/twopi [eV*s]
-CLASSICAL_RADIUS_FACTOR = 2.8179403205e-15 * 0.51099895069, # R_ELECTRON * m_electron,
+# CLASSICAL_RADIUS_FACTOR = 2.8179403205e-15 * 0.51099895069, # R_ELECTRON * m_electron,
 # e^2 / (4 pi eps_0) = classical_radius * mass * c^2.
 # Is same for all particles of charge +/- 1.
 

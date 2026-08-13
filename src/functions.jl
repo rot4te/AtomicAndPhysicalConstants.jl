@@ -19,8 +19,9 @@ convention:
 ```julia
 nameof(Species("electron"))   # "electron"
 nameof(Species("Fe"))         # "Fe"
-nameof(Species("4He+2"))      # "#4He+2"
+nameof(Species("#4He+2"))     # "#4He+2"
 nameof(Species("Li+"))        # "Li+1"
+nameof(Species("anti-#4He"))  # "anti-#4He"
 ```
 """
 function Base.nameof(species::Species)
@@ -38,12 +39,20 @@ function Base.nameof(species::Species)
   else
     iso = getfield(species, :iso)
     charge = Int(getfield(species, :charge))
-    if charge > 0
-      return "#$iso" * getfield(species, :name) * "+$charge"
-    elseif charge < 0
-      return "#$iso" * getfield(species, :name) * "$charge"
+    name = getfield(species, :name)
+    # For anti-atoms the stored name is "anti-<symbol>"; the mass-number prefix
+    # belongs on the symbol, giving "anti-#<iso><symbol>" (not "#<iso>anti-...").
+    if startswith(name, "anti-")
+      base = "anti-#$iso" * chopprefix(name, "anti-")
     else
-      return "#$iso" * getfield(species, :name)
+      base = "#$iso" * name
+    end
+    if charge > 0
+      return base * "+$charge"
+    elseif charge < 0
+      return base * "$charge"
+    else
+      return base
     end
   end
 end
@@ -85,7 +94,7 @@ atomic species.
 massof(Species("electron"))              # 510998.95069  eV/c²
 massof(Species("proton"))               # 9.38272089430e8  eV/c²
 massof(Species("H"), AMU = true)        # ≈ 1.00794  u
-massof(Species("4He"), AMU = true)      # ≈ 4.0026  u
+massof(Species("#4He"), AMU = true)     # ≈ 4.0026  u
 ```
 """
 function massof(species::Species; AMU::Bool=false)
@@ -199,7 +208,7 @@ Return the mass number (isotope) of `species`.
 # Examples
 
 ```julia
-iso_of(Species("3He"))          # 3
+iso_of(Species("#3He"))         # 3
 iso_of(Species("He"))           # -1  (abundance average)
 iso_of(Species("electron"))     # 0
 ```

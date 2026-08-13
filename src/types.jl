@@ -1,6 +1,6 @@
 # AtomicAndPhysicalConstants/src/types.jl
 
-# This module defines the core data structures used in APClite.
+# This module defines the core data structures used in APC.
 """
     Species(speciesname::String)
     Species()
@@ -28,16 +28,17 @@ Pass the openPMD name exactly:
 
 Atomic symbols `"H"` (Z=1) through `"Og"` (Z=118) are supported.
 
-**Mass number** — prefix the symbol with ASCII digits, `#`-prefixed digits, or
-Unicode superscripts. Omit for the abundance-averaged mass.
+**Mass number** — There are two ways to include the mass number: Before the atomic symbol,
+either prefix with a pound symbol `#` followed by the mass number or, prefix with a 
+Unicode superscript(s). A bare ASCII mass number (e.g. `"4He"`) is **not** accepted.
+Correct would be `"#4He"` or `"⁴He"`.
 
 **Charge state** — append after the symbol. Repeated signs (`"++"`, `"---"`)
 or `"+n"` / `"-n"` notation are both accepted.
 
 ```julia
-Species("4He")      # helium-4, neutral
+Species("#4He")     # helium-4, neutral (# prefix required for ASCII digits)
 Species("⁴He")      # same, Unicode superscript
-Species("#4He")     # same, # prefix
 Species("Li+3")     # lithium, charge +3
 Species("Li+++")    # same
 Species("K-2")      # potassium, charge −2
@@ -167,17 +168,19 @@ CODATA2014.C_LIGHT      # speed of light from the 2014 release
 
 
   M_ELECTRON::Float64
-  # Electron Mass [MeV]/c^2
+  # Electron Mass [eV]/c^2
   M_PROTON::Float64
-  # Proton Mass [MeV]/c^2
+  # Proton Mass [eV]/c^2
   M_NEUTRON::Float64
-  # Neutron Mass [MeV]/c^2
+  # Neutron Mass [eV]/c^2
   M_MUON::Float64
-  # Muon Mass [MeV]/c^2
+  # Muon Mass [eV]/c^2
   M_HELION::Float64
-  # Helion Mass He3 nucleus [MeV]/c^2
+  # Helion Mass He3 nucleus [eV]/c^2
   M_DEUTERON::Float64
-  # Deuteron Mass [MeV]/c^2
+  # Deuteron Mass [eV]/c^2
+  M_TRITON::Float64
+  # Triton Mass [eV]/c^2
 
   # constants mysteriously missing from the release
   # picked up from PDG
@@ -255,7 +258,7 @@ CODATA2014.C_LIGHT      # speed of light from the 2014 release
   # Planck's constant [J*s]
   H_BAR::Float64
   # h_planck/twopi [J*s]
-  CLASSICAL_RADIUS_FACTOR::Float64
+  # CLASSICAL_RADIUS_FACTOR::Float64
   # e^2 / (4 pi eps_0) = classical_radius*mass*c^2.
   # Is same for all particles of charge +/- 1.
 

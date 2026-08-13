@@ -40,6 +40,11 @@ M_DEUTERON::Float64 - Mass of the deuteron in eV/c^2 from the selected CODATA re
 """
 const M_DEUTERON::Float64 = _ACTIVE.M_DEUTERON
 # Deuteron Mass [eV]/c^2
+"""
+M_TRITON::Float64 - Mass of the triton in eV/c^2 from the selected CODATA release.
+"""
+const M_TRITON::Float64 = _ACTIVE.M_TRITON
+# Triton Mass [eV]/c^2
 
 # constants mysteriously missing from the release
 # picked up from PDG
@@ -203,9 +208,9 @@ H_BAR::Float64 - Planck's reduced constant (ħ) in eV*s per the selected CODATA 
 const H_BAR::Float64 = _ACTIVE.H_BAR
 # h_planck/twopi [eV*s]
 """
-CLASSICAL_RADIUS_FACTOR::Float64 - Classical radius factor per the selected CODATA release.
+CLASSICAL_RADIUS_FACTOR::Float64 - Classical radius factor derived from the selected CODATA release.
 """
-const CLASSICAL_RADIUS_FACTOR::Float64 = _ACTIVE.CLASSICAL_RADIUS_FACTOR # R_ELECTRON * m_electron,
+const CLASSICAL_RADIUS_FACTOR::Float64 = _ACTIVE.R_ELECTRON * _ACTIVE.M_ELECTRON # R_ELECTRON * M_ELECTRON,
 # e^2 / (4 pi eps_0)::Float64 = classical_radius * mass * c^2.
 # Is same for all particles of charge +/- 1.
 
