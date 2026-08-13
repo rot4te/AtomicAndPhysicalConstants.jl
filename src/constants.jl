@@ -140,7 +140,7 @@ _G_DEUTERON::Float64 - The deuteron spin g-factor exactly as tabulated by NIST f
 CODATA release, i.e. normalized to the nuclear magneton `mu_N = e*hbar/(2*M_PROTON)`.
 Internal: use `G_DEUTERON` instead.
 """
-const _G_DEUTERON::Float64 = _ACTIVE.G_DEUTERON
+const _G_DEUTERON::Float64 = _ACTIVE.G_DEUTERON_NUCLEAR
 # deuteron g factor
 """
 G_DEUTERON::Float64 - The deuteron spin g-factor renormalized to the deuteron magneton
@@ -158,7 +158,7 @@ _G_HELION::Float64 - The helion spin g-factor exactly as tabulated by NIST for t
 CODATA release, i.e. normalized to the nuclear magneton `mu_N = e*hbar/(2*M_PROTON)`.
 Internal: use `G_HELION` instead.
 """
-const _G_HELION::Float64 = _ACTIVE.G_HELION
+const _G_HELION::Float64 = _ACTIVE.G_HELION_NUCLEAR
 # helion g factor
 """
 G_HELION::Float64 - The helion spin g-factor renormalized to the helion magneton
@@ -186,7 +186,7 @@ _G_TRITON::Float64 - The triton spin g-factor exactly as tabulated by NIST for t
 CODATA release, i.e. normalized to the nuclear magneton `mu_N = e*hbar/(2*M_PROTON)`.
 Internal: use `G_TRITON` instead.
 """
-const _G_TRITON::Float64 = _ACTIVE.G_TRITON
+const _G_TRITON::Float64 = _ACTIVE.G_TRITON_NUCLEAR
 # triton g factor
 """
 G_TRITON::Float64 - The triton spin g-factor renormalized to the triton magneton
