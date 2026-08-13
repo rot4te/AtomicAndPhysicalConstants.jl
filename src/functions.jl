@@ -120,7 +120,7 @@ function spinof(species::Species)
 end
 
 """
-    gspin_of(species::Species; signed::Bool = false) -> Float64
+    g_spin(species::Species; signed::Bool = false) -> Float64
 
 Return the spin g-factor of `species`.
 
@@ -133,13 +133,13 @@ Returns 0 for atomic species, for which no g-factor is stored.
 # Examples
 
 ```julia
-gspin_of(Species("electron"))               # 2.00231930436092
-gspin_of(Species("electron"), signed=true)  # -2.00231930436092
-gspin_of(Species("proton"))                 # 5.5856946893
-gspin_of(Species("H"))                      # 0.0
+g_spin(Species("electron"))               # 2.00231930436092
+g_spin(Species("electron"), signed=true)  # -2.00231930436092
+g_spin(Species("proton"))                 # 5.5856946893
+g_spin(Species("H"))                      # 0.0
 ```
 """
-function gspin_of(species::Species; signed::Bool = false)
+function g_spin(species::Species; signed::Bool = false)
 
   !signed ? (return abs(getfield(species, :gspin))) : (return getfield(species, :gspin))
 end
@@ -177,7 +177,7 @@ function gyromagnetic_anomaly(species::Species)::Float64
   kind = getfield(species, :kind)
 
 
-  (kind == Kind.LEPTON || kind == Kind.HADRON) ? (return ((gspin_of(species, signed=true)-2.0)/2.0)) : (return convert(Float64, NaN))
+  (kind == Kind.LEPTON || kind == Kind.HADRON) ? (return ((g_spin(species, signed=true)-2.0)/2.0)) : (return convert(Float64, NaN))
   
 end
 
@@ -454,7 +454,7 @@ function Base.show(io::IO, ::MIME"text/plain", species::Species)
     println(io, "Mass: $(massof(species)) eV/c²")
     println(io, "Spin: $(spinof(species)) ħ")
     println(io, "Moment: $(momentof(species)) eV/T")
-    println(io, "G-factor: $(gspin_of(species))")
+    println(io, "G-factor: $(g_spin(species))")
     if iso_of(species) > 0 
       println(io, "Mass number: $(iso_of(species))")
       println(io, "Atomic Number: $(atomicnumberof(species))")
