@@ -92,25 +92,28 @@ g = g_\text{NIST}\,\frac{m}{m_p}
 
 | Exported constant | Definition |
 |-------------------|------------|
-| `G_DEUTERON` | `CODATA G_DEUTERON * M_DEUTERON / M_PROTON` |
-| `G_HELION` | `CODATA G_HELION * M_HELION / M_PROTON` |
-| `G_TRITON` | `CODATA G_TRITON * M_TRITON / M_PROTON` |
+| `G_DEUTERON` | `G_DEUTERON_NUCLEAR * M_DEUTERON / M_PROTON` |
+| `G_HELION` | `G_HELION_NUCLEAR * M_HELION / M_PROTON` |
+| `G_TRITON` | `G_TRITON_NUCLEAR * M_TRITON / M_PROTON` |
 
-The unrenormalized NIST numbers remain available as the internal (unexported)
-constants `AtomicAndPhysicalConstants._G_DEUTERON`, `._G_HELION`, and
-`._G_TRITON`, and as the raw fields of the release structs
-(`CODATA2022.G_DEUTERON`, …).
+The `_NUCLEAR` suffix marks the nuclear-magneton normalization: those are the
+names the raw NIST values carry as fields of the release structs
+(`CODATA2022.G_DEUTERON_NUCLEAR`, …).  There is no exported top-level
+`G_*_NUCLEAR` constant; the active release's values are held as the internal
+`AtomicAndPhysicalConstants._G_DEUTERON`, `._G_HELION`, and `._G_TRITON`.
 
 The mass ratio uses the mass from the *same* active CODATA release as the
 g-factor, so switching releases with [`set_release`](@ref) renormalizes
 consistently.
 
-The electron, muon, proton, and neutron g-factors need no such rescaling: CODATA
-already tabulates them against the magneton built from the particle's own mass,
-so they are exported exactly as published.
+Only these three struct fields carry the `_NUCLEAR` suffix.  The electron, muon,
+proton, and neutron g-factors need no rescaling — CODATA already tabulates them
+against the magneton built from the particle's own mass — so `G_ELECTRON`,
+`G_MUON`, `G_PROTON`, and `G_NEUTRON` keep their plain names in the release
+structs and are exported exactly as published.
 
 Because the renormalization is folded into the constants themselves,
-[`gspin_of`](@ref) and [`gyromagnetic_anomaly`](@ref) need no special-casing —
+[`g_spin`](@ref) and [`gyromagnetic_anomaly`](@ref) need no special-casing —
 ``a = (g-2)/2`` applies uniformly to every subatomic species:
 
 ```julia

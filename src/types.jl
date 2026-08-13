@@ -66,7 +66,7 @@ Species("anti-H")   # antihydrogen
 | `kind` | `Kind.T` | `LEPTON`, `HADRON`, `PHOTON`, `ATOM`, or `NULL` |
 
 Direct field access is disabled. Use [`chargeof`](@ref), [`massof`](@ref),
-[`spinof`](@ref), [`gspin_of`](@ref), [`momentof`](@ref), [`iso_of`](@ref),
+[`spinof`](@ref), [`g_spin`](@ref), [`momentof`](@ref), [`iso_of`](@ref),
 [`atomicnumberof`](@ref), [`kindof`](@ref), [`isnullspecies`](@ref),
 [`Base.nameof`](@ref).
 """
