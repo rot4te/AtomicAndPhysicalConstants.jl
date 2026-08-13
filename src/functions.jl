@@ -157,11 +157,19 @@ a = \\frac{g - 2}{2}
 for leptons and hadrons.  Returns `NaN` for photons, atoms, and null species,
 since the gyromagnetic anomaly is not defined for them.
 
+The stored g-factors are all in the convention `mu = g * (e / 2m) * S`, where the
+particle's own mass sets the magneton, so this formula applies uniformly.  For the
+deuteron, helion, and triton this required renormalizing the NIST values, which are
+tabulated against the nuclear magneton `e*hbar/(2*M_PROTON)`; `G_DEUTERON`,
+`G_HELION`, and `G_TRITON` carry the renormalized values (see the
+[Physical Constants](@ref man-constants) manual page).
+
 # Examples
 
 ```julia
 gyromagnetic_anomaly(Species("electron"))   # ≈  0.00115965218046
 gyromagnetic_anomaly(Species("muon"))       # ≈  0.00116592062
+gyromagnetic_anomaly(Species("deuteron"))   # ≈ -0.1429872697
 gyromagnetic_anomaly(Species("H"))          # NaN
 ```
 """
