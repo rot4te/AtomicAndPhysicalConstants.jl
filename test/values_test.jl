@@ -33,9 +33,9 @@
   @test G_PROTON ≈ 5.5856946893
   @test G_NEUTRON ≈ -3.82608552
   @test G_MUON ≈ -2.00233184123
-  @test G_DEUTERON ≈ 0.8574382335
-  @test G_TRITON ≈ 5.957924930
-  @test G_HELION ≈ -4.2552506995
+  @test G_DEUTERON ≈ 0.8574382335 * M_DEUTERON / M_PROTON
+  @test G_TRITON ≈ 5.957924930 * M_TRITON / M_PROTON
+  @test G_HELION ≈ -4.2552506995 * M_HELION / M_PROTON
 
   # Test other physical constants
   @test E_CHARGE ≈ 1.602176634e-19  # elementary charge in C
@@ -44,9 +44,9 @@
   @test H_BAR ≈ 6.582119569e-16  # reduced Planck constant
   @test R_ELECTRON ≈ 2.8179403205e-15  # classical electron radius in m
   @test R_PROTON ≈ 1.5346982640795807e-18
-  @test CLASSICAL_RADIUS_FACTOR ≈ 1.4399645468825422e-15
-  @test EPS_0 ≈ 8.8541878188e-12  # permittivity of free space in F/m
-  @test MU_0 ≈ 1.25663706127e-6  # vacuum permeability in N/A^2
+  @test CLASSICAL_RADIUS_FACTOR ≈ 1.4399645468825422e-9
+  @test EPS_0 ≈ 5.5263493618e7  # permittivity of free space in 1/(eV*m)
+  @test MU_0 ≈ 2.0133545370e-25  # vacuum permeability in eV*s^2/m
   @test isapprox(K_BOLTZMANN, 8.61733e-5, atol=2e-10)
   @test RELEASE_YEAR == 2022
 

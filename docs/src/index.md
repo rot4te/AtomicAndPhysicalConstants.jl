@@ -30,7 +30,7 @@ M_ELECTRON # 510998.95069  eV/c²
 e    = Species("electron")
 p    = Species("proton")
 h    = Species("H")          # neutral hydrogen, abundance-averaged mass
-he3  = Species("3He")        # neutral helium-3
+he3  = Species("#3He")       # neutral helium-3
 hion = Species("H+")         # singly-ionised hydrogen
 antip = Species("anti-proton")
 
@@ -39,8 +39,8 @@ massof(e)                    # 510998.95069  eV/c²
 massof(h, AMU=true)          # mass in atomic mass units
 chargeof(hion)               # 1  (units of e)
 spinof(e)                    # 0.5  ħ
-gspin_of(e)                  # 2.00231930436092
-gyromagnetic_anomaly(e)      # ≈ 0.00115965…
+g_spin(e)                    # 2.00231930436092  (unsigned; signed=true for -2.0023…)
+gyromagnetic_anomaly(e)      # ≈ 0.00115965…  = (|g| - 2)/2
 momentof(p)                  # magnetic dipole moment  eV/T
 iso_of(he3)                  # 3  (mass number)
 ```

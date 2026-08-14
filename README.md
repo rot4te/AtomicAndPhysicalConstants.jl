@@ -47,7 +47,7 @@ julia> p = Species("proton"); # suppress the output for the rest of the definiti
 
 julia> h = Species("H"); # a neutral hydrogen atom
 
-julia> he = Species("3He"); # a neutral helium atom with mass number 3
+julia> he = Species("#3He"); # a neutral helium atom with mass number 3
 
 julia> h_ion = Species("H+"); # a hydrogen atom with one less electron than usual
 
@@ -70,11 +70,13 @@ julia> massof(h, AMU=true) # or grab the mass of an atom in AMU (also called Dal
 julia> spinof(e) # spin projection of the particle in [ħ]
 0.5
 
-julia> gspin_of(e) # spin g-factor (dimensionless)
+julia> g_spin(e) # spin g-factor (dimensionless), absolute value by default
 2.00231930436092
 
+julia> g_spin(e, signed=true) # signed g-factor
+-2.00231930436092
 
-julia> gyromagnetic_anomaly(e)
+julia> gyromagnetic_anomaly(e) # (|g| - 2)/2
 0.0011596521804599913
 
 julia> momentof(p) # magnetic dipole moment in [eV/T] - errors for atoms
@@ -98,6 +100,7 @@ The following list of strings may be used as arguments to the `Species()` functi
 - `"pion0"`, `"pion+"`, `"pion-"`
 - `"deuteron"`, `"anti-deuteron"`
 - `"triton"`, `"anti-triton"`
+- `"helion"`, `"anti-helion"`
 - `"photon"`
 
 ### Atomic Species
@@ -106,10 +109,10 @@ Atomic numbers from 1 (`"H"`) to 118 (`"Og"`) are available with the `Species()`
 
 #### Mass Number Formatting
 
-To access different isotopes of a particular atomic element, two different syntax option are available:
+To access different isotopes of a particular atomic element, two different syntax options are available: a `#`-prefixed ASCII mass number, or a Unicode superscript mass number. A bare ASCII mass number (e.g. `"5He"`) is **not** accepted.
 
 ```julia-repl
-julia> he = Species("#5He"); he5 = Species("5He");
+julia> he = Species("#5He"); he5 = Species("⁵He");
 
 julia>  massof(he5, AMU=true)
 5.012057
@@ -215,9 +218,9 @@ Both Pion masses are obtained from PDG, rather than CODATA.
 - `C_LIGHT`: speed of light in [m/s]
 - `H_PLANCK`: Planck's constant in [eV⋅s]
 - `H_BAR`: Planck's reduced constant in [eV⋅s]
-- `CLASSICAL_RADIUS_FACTOR` 
-- `EPS_0`: Permittivity of free space in [F/m]
-- `MU_0`: Vacuum Permeability in [N/A^2]
+- `CLASSICAL_RADIUS_FACTOR`: classical radius factor e²/(4πε₀) = rₑmₑc² in [eV⋅m], derived as `R_ELECTRON * M_ELECTRON`
+- `EPS_0`: Permittivity of free space in [1/(eV⋅m)]
+- `MU_0`: Vacuum Permeability in [eV⋅s²/m]
 
 
 ### Conversion Constants

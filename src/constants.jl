@@ -136,9 +136,17 @@ const ANOMALY_MUON::Float64 = _ACTIVE.ANOMALY_MUON
 # muon magnetic moment anomaly
 
 """
-G_DEUTERON::Float64 - The deuteron spin g-factor per the selected CODATA release.
+_G_DEUTERON::Float64 - The deuteron spin g-factor exactly as tabulated by NIST for the selected
+CODATA release, i.e. normalized to the nuclear magneton `mu_N = e*hbar/(2*M_PROTON)`.
+Internal: use `G_DEUTERON` instead.
 """
-const G_DEUTERON::Float64 = _ACTIVE.G_DEUTERON
+const _G_DEUTERON::Float64 = _ACTIVE.G_DEUTERON_NUCLEAR
+# deuteron g factor
+"""
+G_DEUTERON::Float64 - The deuteron spin g-factor renormalized to the deuteron magneton
+`e*hbar/(2*M_DEUTERON)`, the convention in which the gyromagnetic anomaly `a = (|g|-2)/2` holds.
+"""
+const G_DEUTERON::Float64 = _G_DEUTERON * M_DEUTERON / M_PROTON
 # deuteron g factor 
 """
 G_ELECTRON::Float64 - The electron spin g-factor per the selected CODATA release.
@@ -146,9 +154,17 @@ G_ELECTRON::Float64 - The electron spin g-factor per the selected CODATA release
 const G_ELECTRON::Float64 = _ACTIVE.G_ELECTRON
 # electron g factor 
 """
-G_HELION::Float64 - The helion spin g-factor per the selected CODATA release.
+_G_HELION::Float64 - The helion spin g-factor exactly as tabulated by NIST for the selected
+CODATA release, i.e. normalized to the nuclear magneton `mu_N = e*hbar/(2*M_PROTON)`.
+Internal: use `G_HELION` instead.
 """
-const G_HELION::Float64 = _ACTIVE.G_HELION
+const _G_HELION::Float64 = _ACTIVE.G_HELION_NUCLEAR
+# helion g factor
+"""
+G_HELION::Float64 - The helion spin g-factor renormalized to the helion magneton
+`e*hbar/(2*M_HELION)`, the convention in which the gyromagnetic anomaly `a = (|g|-2)/2` holds.
+"""
+const G_HELION::Float64 = _G_HELION * M_HELION / M_PROTON
 # helion g factor 
 """
 G_MUON::Float64 - The muon spin g-factor per the selected CODATA release.
@@ -166,9 +182,17 @@ G_PROTON::Float64 - The proton spin g-factor per the selected CODATA release.
 const G_PROTON::Float64 = _ACTIVE.G_PROTON
 # proton g factor 
 """
-G_TRITON::Float64 - The triton spin g-factor per the selected CODATA release.
+_G_TRITON::Float64 - The triton spin g-factor exactly as tabulated by NIST for the selected
+CODATA release, i.e. normalized to the nuclear magneton `mu_N = e*hbar/(2*M_PROTON)`.
+Internal: use `G_TRITON` instead.
 """
-const G_TRITON::Float64 = _ACTIVE.G_TRITON
+const _G_TRITON::Float64 = _ACTIVE.G_TRITON_NUCLEAR
+# triton g factor
+"""
+G_TRITON::Float64 - The triton spin g-factor renormalized to the triton magneton
+`e*hbar/(2*M_TRITON)`, the convention in which the gyromagnetic anomaly `a = (|g|-2)/2` holds.
+"""
+const G_TRITON::Float64 = _G_TRITON * M_TRITON / M_PROTON
 # triton g factor
 
 
@@ -208,9 +232,9 @@ H_BAR::Float64 - Planck's reduced constant (ħ) in eV*s per the selected CODATA 
 const H_BAR::Float64 = _ACTIVE.H_BAR
 # h_planck/twopi [eV*s]
 """
-CLASSICAL_RADIUS_FACTOR::Float64 - Classical radius factor per the selected CODATA release.
+CLASSICAL_RADIUS_FACTOR::Float64 - Classical radius factor derived from the selected CODATA release.
 """
-const CLASSICAL_RADIUS_FACTOR::Float64 = _ACTIVE.CLASSICAL_RADIUS_FACTOR # R_ELECTRON * m_electron,
+const CLASSICAL_RADIUS_FACTOR::Float64 = _ACTIVE.R_ELECTRON * _ACTIVE.M_ELECTRON # R_ELECTRON * M_ELECTRON,
 # e^2 / (4 pi eps_0)::Float64 = classical_radius * mass * c^2.
 # Is same for all particles of charge +/- 1.
 
@@ -219,15 +243,15 @@ K_BOLTZMANN::Float64 - Boltzmann constant k_B in eV/K per the selected CODATA re
 """
 const K_BOLTZMANN::Float64 = _ACTIVE.K_BOLTZMANN
 """
-EPS_0::Float64 - Permittivity of free space in F/m per the selected CODATA release.
+EPS_0::Float64 - Permittivity of free space in 1/(eV*m) per the selected CODATA release.
 """
 const EPS_0::Float64 = _ACTIVE.EPS_0
-# Permittivity of free space in [F/m]
+# Permittivity of free space in [1/(eV*m)]
 """
-MU_0::Float64 - Vacuum permeability in N/A^2 per the selected CODATA release.
+MU_0::Float64 - Vacuum permeability in eV*s^2/m per the selected CODATA release.
 """
 const MU_0::Float64 = _ACTIVE.MU_0
-# Vacuum permeability in [N/A^2] (newtons per ampere squared)
+# Vacuum permeability in [eV*s^2/m]
 
 """
 KG_PER_AMU::Float64 - Kilograms per Dalton conversion in the selected CODATA release.

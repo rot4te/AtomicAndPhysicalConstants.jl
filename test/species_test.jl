@@ -7,7 +7,7 @@
     @test chargeof(s) == particle.charge
     @test massof(s) == particle.mass
     @test spinof(s) == particle.spin
-    @test gspin_of(s; signed=true) == particle.gspin
+    @test g_spin(s; signed=true) == particle.gspin
     @test momentof(s) == particle.moment
     @test iso_of(s) == 0
     @test nameof(s) == name
@@ -18,17 +18,25 @@
     @test kindof(Species(name)) == Kind.LEPTON
   end
   for name in ("proton", "anti-proton", "neutron", "anti-neutron",
-               "pion0", "pion+", "pion-", "deuteron", "anti-deuteron")
+               "pion0", "pion+", "pion-", "deuteron", "anti-deuteron",
+               "triton", "anti-triton", "helion", "anti-helion")
     @test kindof(Species(name)) == Kind.HADRON
   end
 
+  # helion / anti-helion are doubly charged, and the anti-particle only flips
+  # the sign of the charge
+  @test chargeof(Species("helion")) == 2
+  @test chargeof(Species("anti-helion")) == -2
+  @test massof(Species("anti-helion")) == massof(Species("helion")) == M_HELION
+  @test g_spin(Species("helion"); signed=true) == G_HELION
+
   # anti-neutron g-factor must match the neutron's, not the electron's
   @test AtomicAndPhysicalConstants.SUBATOMIC_SPECIES["anti-neutron"].gspin == G_NEUTRON
-  @test gspin_of(Species("anti-neutron"); signed=true) == G_NEUTRON
+  @test g_spin(Species("anti-neutron"); signed=true) == G_NEUTRON
 
   # pions are spin-0, so their g-factor is conventionally 0, not NaN
   for name in ("pion0", "pion+", "pion-")
-    @test gspin_of(Species(name)) == 0.0
+    @test g_spin(Species(name)) == 0.0
   end
 end
 

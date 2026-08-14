@@ -1,6 +1,6 @@
 # AtomicAndPhysicalConstants/src/types.jl
 
-# This module defines the core data structures used in APClite.
+# This module defines the core data structures used in APC.
 """
     Species(speciesname::String)
     Species()
@@ -28,16 +28,17 @@ Pass the openPMD name exactly:
 
 Atomic symbols `"H"` (Z=1) through `"Og"` (Z=118) are supported.
 
-**Mass number** — prefix the symbol with ASCII digits, `#`-prefixed digits, or
-Unicode superscripts. Omit for the abundance-averaged mass.
+**Mass number** — There are two ways to include the mass number: Before the atomic symbol,
+either prefix with a pound symbol `#` followed by the mass number or, prefix with a 
+Unicode superscript(s). A bare ASCII mass number (e.g. `"4He"`) is **not** accepted.
+Correct would be `"#4He"` or `"⁴He"`.
 
 **Charge state** — append after the symbol. Repeated signs (`"++"`, `"---"`)
 or `"+n"` / `"-n"` notation are both accepted.
 
 ```julia
-Species("4He")      # helium-4, neutral
+Species("#4He")     # helium-4, neutral (# prefix required for ASCII digits)
 Species("⁴He")      # same, Unicode superscript
-Species("#4He")     # same, # prefix
 Species("Li+3")     # lithium, charge +3
 Species("Li+++")    # same
 Species("K-2")      # potassium, charge −2
@@ -65,7 +66,7 @@ Species("anti-H")   # antihydrogen
 | `kind` | `Kind.T` | `LEPTON`, `HADRON`, `PHOTON`, `ATOM`, or `NULL` |
 
 Direct field access is disabled. Use [`chargeof`](@ref), [`massof`](@ref),
-[`spinof`](@ref), [`gspin_of`](@ref), [`momentof`](@ref), [`iso_of`](@ref),
+[`spinof`](@ref), [`g_spin`](@ref), [`momentof`](@ref), [`iso_of`](@ref),
 [`atomicnumberof`](@ref), [`kindof`](@ref), [`isnullspecies`](@ref),
 [`Base.nameof`](@ref).
 """
@@ -225,11 +226,11 @@ CODATA2014.C_LIGHT      # speed of light from the 2014 release
   ANOMALY_MUON::Float64
   # muon magnetic moment anomaly
 
-  G_DEUTERON::Float64
+  G_DEUTERON_NUCLEAR::Float64
   # deuteron g factor 
   G_ELECTRON::Float64
   # electron g factor 
-  G_HELION::Float64
+  G_HELION_NUCLEAR::Float64
   # helion g factor 
   G_MUON::Float64
   # muon g factor 
@@ -237,7 +238,7 @@ CODATA2014.C_LIGHT      # speed of light from the 2014 release
   # neutron g factor 
   G_PROTON::Float64
   # proton g factor 
-  G_TRITON::Float64
+  G_TRITON_NUCLEAR::Float64
   # triton g factor
 
 
@@ -257,7 +258,7 @@ CODATA2014.C_LIGHT      # speed of light from the 2014 release
   # Planck's constant [J*s]
   H_BAR::Float64
   # h_planck/twopi [J*s]
-  CLASSICAL_RADIUS_FACTOR::Float64
+  # CLASSICAL_RADIUS_FACTOR::Float64
   # e^2 / (4 pi eps_0) = classical_radius*mass*c^2.
   # Is same for all particles of charge +/- 1.
 
@@ -265,9 +266,9 @@ CODATA2014.C_LIGHT      # speed of light from the 2014 release
   # Boltzmann factor k_B in eV/K
 
   EPS_0::Float64
-  # Permittivity of free space in [F/m]
+  # Permittivity of free space in [1/(eV*m)]
   MU_0::Float64
-  # Vacuum permeability in [N/A^2] (newtons per ampere squared)
+  # Vacuum permeability in [eV*s^2/m]
 
 
   #######################################

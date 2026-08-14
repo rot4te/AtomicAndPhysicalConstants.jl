@@ -87,9 +87,9 @@ G_PROTON = 5.585694701,
 # the following dimensionless constants were not included in CODATA2002
 ANOMALY_ELECTRON = NaN,
 ANOMALY_MUON = NaN,
-G_DEUTERON = NaN,
-G_HELION = NaN,
-G_TRITON = NaN,
+G_DEUTERON_NUCLEAR = NaN,
+G_HELION_NUCLEAR = NaN,
+G_TRITON_NUCLEAR = NaN,
 
 
 #######################################
@@ -109,17 +109,17 @@ H_PLANCK = 4.13566743e-15,
 # Planck's constant [J*s]
 H_BAR = 6.58211915e-16,
 # h_planck/twopi [eV*s]
-CLASSICAL_RADIUS_FACTOR = 2.8179403205e-15 * 0.51099895069, # R_ELECTRON* m_electron,
+# CLASSICAL_RADIUS_FACTOR = 2.8179403205e-15 * 0.51099895069, # R_ELECTRON* m_electron,
 # e^2 / (4 pi eps_0)::typeof() = classical_radius * mass * c^2.
 # Is same for all particles of charge +/- 1.
 
 K_BOLTZMANN = 8.61734315e-5,
 #k_B in eV/K
 
-EPS_0= 8.8541878188e-12,
-# Permittivity of free space in [F/m]
-MU_0 = 1.25663706127e-6,
-# Vacuum permeability in [N/A^2] (newtons per ampere squared)
+EPS_0= 5.5263493618e7,
+# Permittivity of free space in [1/(eV*m)]
+MU_0 = 2.0133545370e-25,
+# Vacuum permeability in [eV*s^2/m]
 
 
 

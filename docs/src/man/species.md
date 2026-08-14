@@ -36,6 +36,11 @@ Pass the openPMD particle name exactly as it appears in the table below.
 | `"anti-deuteron"` | antideuteron |
 | `"triton"` | triton |
 | `"anti-triton"` | antitriton |
+<<<<<<< HEAD
+=======
+| `"helion"` | helion |
+| `"anti-helion"` | antihelion |
+>>>>>>> gyro_anom_normalization
 | `"photon"` | photon |
 
 ```julia

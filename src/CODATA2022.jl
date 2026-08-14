@@ -97,11 +97,11 @@ ANOMALY_ELECTRON = 1.15965218046e-3,
 ANOMALY_MUON = 1.16592062e-3,
 # muon magnetic moment anomaly
 
-G_DEUTERON = 0.8574382335,
+G_DEUTERON_NUCLEAR = 0.8574382335,
 # deuteron g factor 
 G_ELECTRON = -2.00231930436092,
 # electron g factor 
-G_HELION = -4.2552506995,
+G_HELION_NUCLEAR = -4.2552506995,
 # helion g factor 
 G_MUON = -2.00233184123,
 # muon g factor 
@@ -109,7 +109,7 @@ G_NEUTRON = -3.82608552,
 # neutron g factor 
 G_PROTON = 5.5856946893,
 # proton g factor 
-G_TRITON = 5.957924930,
+G_TRITON_NUCLEAR = 5.957924930,
 # triton g factor
 
 
@@ -130,17 +130,17 @@ H_PLANCK = 4.135667696e-15,
 # Planck's constant [eV*s]
 H_BAR = 6.582119569e-16,
 # h_planck/twopi [eV*s]
-CLASSICAL_RADIUS_FACTOR = 2.8179403205e-15 * 0.51099895069, # R_ELECTRON * m_electron,
+# CLASSICAL_RADIUS_FACTOR = 2.8179403205e-15 * 0.51099895069, # R_ELECTRON * m_electron,
 # e^2 / (4 pi eps_0) = classical_radius * mass * c^2.
 # Is same for all particles of charge +/- 1.
 
 K_BOLTZMANN = 8.617333262e-5,
 #k_B in eV/K
 
-EPS_0 = 8.8541878188e-12,
-# Permittivity of free space in [F/m]
-MU_0 = 1.25663706127e-6,
-# Vacuum permeability in [N/A^2] (newtons per ampere squared)
+EPS_0 = 5.5263493618e7,
+# Permittivity of free space in [1/(eV*m)]
+MU_0 = 2.0133545370e-25,
+# Vacuum permeability in [eV*s^2/m]
 
 
 
