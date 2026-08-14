@@ -177,7 +177,7 @@ function gyromagnetic_anomaly(species::Species)::Float64
   kind = getfield(species, :kind)
 
 
-  (kind == Kind.LEPTON || kind == Kind.HADRON) ? (return ((g_spin(species, signed=true)-2.0)/2.0)) : (return convert(Float64, NaN))
+  (kind == Kind.LEPTON || kind == Kind.HADRON) ? (return ((g_spin(species)-2.0)/2.0)) : (return convert(Float64, NaN))
   
 end
 
