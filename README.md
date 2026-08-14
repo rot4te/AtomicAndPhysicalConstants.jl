@@ -4,8 +4,6 @@
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://bmad-sim.github.io/AtomicAndPhysicalConstants.jl/dev/)
 [![Build Status](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/bmad-sim/AtomicAndPhysicalConstants.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
-
-
 ## Installation
 
 ```julia-repl
@@ -94,7 +92,7 @@ julia> iso_of(he) # mass number of the specified atom - errors for non-atoms
 The following list of strings may be used as arguments to the `Species()` function.
 
 - `"electron"`, `"positron"`
-- `"proton", `"anti-proton"`
+- `"proton"`, `"anti-proton"`
 - `"neutron"`, `"anti-neutron"`
 - `"muon"`, `"anti-muon"`
 - `"pion0"`, `"pion+"`, `"pion-"`
@@ -125,16 +123,21 @@ true
 
 Charge state may be specified for atoms.
 Positive charges with magnitude less than 4_e_ may be given with repeated plus symbols, _e.g._
+
 ```julia-repl
 julia> chargeof(Species("Li+++"))
 3
 ```
+
 Similarly, negative charges with magnitude less than 4_e_ may be given with repeated minus symbols, _e.g._
+
 ```julia-repl
 julia> chargeof(Species("K---"))
 -3
 ```
+
 A single positive or negative sign followed by an integer may be used the same way, _e.g._
+
 ```julia-repl
 julia> Species("Li+++") == Species("Li+3")
 true
@@ -149,8 +152,8 @@ AtomicAndPhysicalConstants.jl supports CODATA releases beginning in 2002.
 The available releases are from: 2002, 2006, 2010, 2014, 2018, and 2022.
 Note that not all constants in this package are supported before the 2010 release.
 
-
 To change your CODATA release year to _e.g._ 2014, run:
+
 ```julia-repl
 julia> using AtomicAndPhysicalConstants
 
@@ -160,6 +163,7 @@ julia> set_release(year = "2014")
 
 This will change the base constants of AtomicAndPhysicalConstants to their recorded value in the specified CODATA release.
 The change is persistent, so to revert back to the default constants, run
+
 ```julia-repl
 julia> set_release()
 ```
@@ -167,6 +171,7 @@ julia> set_release()
 ## Directly Exported Constants
 
 ### Masses with units [eV/c²]
+
 - `M_ELECTRON`
 - `M_PROTON`
 - `M_NEUTRON`
@@ -181,6 +186,7 @@ julia> set_release()
 Both Pion masses are obtained from PDG, rather than CODATA.
 
 ### Magnetic dipole moments with units [eV/T]
+
 - `MU_ELECTRON`
 - `MU_PROTON`
 - `MU_NEUTRON`
@@ -195,6 +201,7 @@ Both Pion masses are obtained from PDG, rather than CODATA.
 - `FINE_STRUCTURE`
 
 #### Spin G-factors
+
 - `G_ELECTRON`
 - `G_PROTON`
 - `G_NEUTRON`
@@ -205,13 +212,14 @@ Both Pion masses are obtained from PDG, rather than CODATA.
 - `G_TRITON`
 
 #### Gyromagnetic Anomalies
+
 - `ANOMALY_ELECTRON`
   - This constant is not available from CODATA releases prior to 2010
 - `ANOMALY_MUON`
   - This constant is not available from CODATA releases prior to 2010
 
-
 ### Other Physical Constants
+
 - `E_CHARGE` - charge on the electron in [C]
 - `R_ELECTRON` : classical electron radius in [m]
 - `R_PROTON`: classical proton radius in [m]
@@ -222,8 +230,8 @@ Both Pion masses are obtained from PDG, rather than CODATA.
 - `EPS_0`: Permittivity of free space in [1/(eV⋅m)]
 - `MU_0`: Vacuum Permeability in [eV⋅s²/m]
 
-
 ### Conversion Constants
+
 - `KG_PER_AMU`:
 - `EV_PER_AMU`
 - `J_PER_EV`
