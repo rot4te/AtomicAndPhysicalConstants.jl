@@ -130,6 +130,8 @@ such as the electron).
 
 Returns 0 for atomic species, for which no g-factor is stored.
 
+[`gyromagnetic_anomaly`](@ref) is built on the default, unsigned value.
+
 # Examples
 
 ```julia
@@ -151,11 +153,17 @@ end
 Compute and return the gyromagnetic anomaly
 
 ```math
-a = \\frac{g - 2}{2}
+a = \\frac{|g| - 2}{2}
 ```
 
 for leptons and hadrons.  Returns `NaN` for photons, atoms, and null species,
 since the gyromagnetic anomaly is not defined for them.
+
+The **unsigned** g-factor is used, i.e. [`g_spin`](@ref) is called with its default
+`signed = false`.  The sign of the stored g-factor records the orientation of the
+magnetic moment relative to the spin, not the size of the anomaly, so species whose
+g-factor is negative (electron, muon, neutron, helion) still get the conventional
+positive anomaly: the electron gives `+0.00115965…`, not `-2.0011…`.
 
 The stored g-factors are all in the convention `mu = g * (e / 2m) * S`, where the
 particle's own mass sets the magneton, so this formula applies uniformly.  For the
@@ -169,6 +177,7 @@ tabulated against the nuclear magneton `e*hbar/(2*M_PROTON)`; `G_DEUTERON`,
 ```julia
 gyromagnetic_anomaly(Species("electron"))   # ≈  0.00115965218046
 gyromagnetic_anomaly(Species("muon"))       # ≈  0.00116592062
+gyromagnetic_anomaly(Species("neutron"))    # ≈  0.91304276
 gyromagnetic_anomaly(Species("deuteron"))   # ≈ -0.1429872697
 gyromagnetic_anomaly(Species("H"))          # NaN
 ```

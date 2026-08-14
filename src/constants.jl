@@ -144,7 +144,7 @@ const _G_DEUTERON::Float64 = _ACTIVE.G_DEUTERON_NUCLEAR
 # deuteron g factor
 """
 G_DEUTERON::Float64 - The deuteron spin g-factor renormalized to the deuteron magneton
-`e*hbar/(2*M_DEUTERON)`, the convention in which the gyromagnetic anomaly `a = (g-2)/2` holds.
+`e*hbar/(2*M_DEUTERON)`, the convention in which the gyromagnetic anomaly `a = (|g|-2)/2` holds.
 """
 const G_DEUTERON::Float64 = _G_DEUTERON * M_DEUTERON / M_PROTON
 # deuteron g factor 
@@ -162,7 +162,7 @@ const _G_HELION::Float64 = _ACTIVE.G_HELION_NUCLEAR
 # helion g factor
 """
 G_HELION::Float64 - The helion spin g-factor renormalized to the helion magneton
-`e*hbar/(2*M_HELION)`, the convention in which the gyromagnetic anomaly `a = (g-2)/2` holds.
+`e*hbar/(2*M_HELION)`, the convention in which the gyromagnetic anomaly `a = (|g|-2)/2` holds.
 """
 const G_HELION::Float64 = _G_HELION * M_HELION / M_PROTON
 # helion g factor 
@@ -190,7 +190,7 @@ const _G_TRITON::Float64 = _ACTIVE.G_TRITON_NUCLEAR
 # triton g factor
 """
 G_TRITON::Float64 - The triton spin g-factor renormalized to the triton magneton
-`e*hbar/(2*M_TRITON)`, the convention in which the gyromagnetic anomaly `a = (g-2)/2` holds.
+`e*hbar/(2*M_TRITON)`, the convention in which the gyromagnetic anomaly `a = (|g|-2)/2` holds.
 """
 const G_TRITON::Float64 = _G_TRITON * M_TRITON / M_PROTON
 # triton g factor

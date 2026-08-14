@@ -77,7 +77,7 @@ g_\text{NIST} = \frac{\mu}{I\,\mu_N}
 ```
 
 so the proton mass — not the particle's own mass — sets the scale.  Used
-directly in ``a = (g-2)/2`` those values give a meaningless anomaly (for the
+directly in ``a = (|g|-2)/2`` those values give a meaningless anomaly (for the
 deuteron, ``(0.857\ldots - 2)/2``).
 
 This package instead stores the g-factor in the convention
@@ -114,7 +114,7 @@ structs and are exported exactly as published.
 
 Because the renormalization is folded into the constants themselves,
 [`g_spin`](@ref) and [`gyromagnetic_anomaly`](@ref) need no special-casing —
-``a = (g-2)/2`` applies uniformly to every subatomic species:
+``a = (|g|-2)/2`` applies uniformly to every subatomic species:
 
 ```julia
 gyromagnetic_anomaly(Species("deuteron"))   # ≈ -0.1429872697
@@ -125,7 +125,11 @@ gyromagnetic_anomaly(Species("deuteron"))   # ≈ -0.1429872697
 
 ## Gyromagnetic anomalies (dimensionless)
 
-The gyromagnetic anomaly is defined as ``a = (g - 2)/2``.
+The gyromagnetic anomaly is defined as ``a = (|g| - 2)/2``.
+[`gyromagnetic_anomaly`](@ref) takes the **unsigned** g-factor — the default of
+[`g_spin`](@ref) — so particles with a negative stored g-factor (electron, muon,
+neutron, helion) come out with the conventional positive anomaly rather than a
+value near ``-2``.
 
 | Constant | Particle | CODATA availability |
 |----------|----------|---------------------|

@@ -81,7 +81,7 @@ exist, only the exported top-level constant.
 `G_DEUTERON`, `G_HELION`, and `G_TRITON` are pulled from the NIST/CODATA tables
 but are **rescaled before export**.  NIST tabulates these g-factors against the
 nuclear magneton ``\mu_N = e\hbar/2m_p``; the package converts them to the
-particle's own magneton so that the gyromagnetic anomaly ``a = (g-2)/2`` comes
+particle's own magneton so that the gyromagnetic anomaly ``a = (|g|-2)/2`` comes
 out correct:
 
 ```julia
